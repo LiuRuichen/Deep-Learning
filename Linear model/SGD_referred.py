@@ -37,7 +37,6 @@ def main ():
     
     net = nn.Sequential(nn.Linear(2, 1))
     net = net.double()
-    net[0].weight.data.normal_(0, 0.01)
     net[0].weight.data = torch.full([1, 2], 0).double()
     print(net[0].weight.data)
     net[0].bias.data.fill_(0)
@@ -64,7 +63,7 @@ def main ():
         A1 = A
         with torch.no_grad():  
             if epoch == 0:
-                plt.plot(xx, net(A1).numpy()[:,0], color = 'r', label = '第' + str(epoch + 1) + '次扫描结果')
+                plt.plot(xx, net(A1).numpy()[:,0], color = 'red', label = '第' + str(epoch + 1) + '次扫描结果')
             elif epoch == 1:
                 plt.plot(xx, net(A1).numpy()[:,0], color = 'black', label = '第' + str(epoch + 1) + '次扫描结果')
             else:

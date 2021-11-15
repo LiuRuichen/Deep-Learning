@@ -99,7 +99,6 @@ def main ():
         w_true1 = w_true.numpy()
         plt.plot(xx, np.dot(A, w_true1) + b_true, linewidth = 2, color = 'red')
         
-
         for X, y in data_iter(batch_size, features, labels):
             l = loss(net(X, w, b), y)
             l.sum().backward()        
@@ -120,17 +119,11 @@ def main ():
                 
             plt.title("第" + str(epoch + 1) + '次扫描', fontproperties = font)
 
-        
-        print(w)   
         with torch.no_grad():
             train_l = loss(net(features, w, b), labels)
             print('epoch ' + str(epoch + 1) + ', loss: ' + str(float(train_l.mean())))
         
         plt.tight_layout()
-        
-        print('w_bias: ' + str(float(torch.norm(w_true-w, 2, dim = 0))))
-        print('b_bias: ' + str(float(np.abs(float(b) - b_true))))
-        print('\n')
     
     '''
     plt.figure()
