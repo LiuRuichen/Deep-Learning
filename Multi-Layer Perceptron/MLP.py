@@ -81,7 +81,9 @@ def train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size,
     loss_arr = []
     for epoch in range(num_epochs):
         train_l_sum, train_acc_sum, n = 0.0, 0.0, 0
+        c = 0
         for X, y in train_iter:
+            print(X.shape)
             y_hat = net(X)
             l = loss(y_hat, y).sum()
 
@@ -99,6 +101,9 @@ def train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size,
             train_l_sum += l.item()
             train_acc_sum += (y_hat.argmax(dim=1) == y).sum().item()
             n += y.shape[0] 
+            c += 1
+        
+        print(c)
                     
         test_acc = evaluate_accuracy(test_iter, net)
         
