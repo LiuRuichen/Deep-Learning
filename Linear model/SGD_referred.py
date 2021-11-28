@@ -55,6 +55,7 @@ def main ():
     num_epochs = 3
     for epoch in range(num_epochs):            
         for X, y in data_iter:
+            print(X.shape)
             l = loss(net(X), y)
             trainer.zero_grad()
             l.backward()

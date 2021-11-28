@@ -3,6 +3,9 @@ import torch
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 import random
+import os
+
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE' 
 
 def synthetic_data (w, b, num_samples):
     '''

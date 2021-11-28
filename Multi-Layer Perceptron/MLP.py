@@ -99,6 +99,7 @@ def train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size,
             optimizer.step()  # 用到优化器这里
 
             train_l_sum += l.item()
+            print('y_hat:', y_hat.shape)
             train_acc_sum += (y_hat.argmax(dim=1) == y).sum().item()
             n += y.shape[0] 
             c += 1
