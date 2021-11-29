@@ -84,6 +84,7 @@ def train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size,
         c = 0
         for X, y in train_iter:
             print(X.shape)
+            print(y.shape)
             y_hat = net(X)
             l = loss(y_hat, y).sum()
 

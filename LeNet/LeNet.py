@@ -125,9 +125,9 @@ def main():
     loss_arr = np.zeros(num_epochs)
     for epoch in range(num_epochs):
         sum_loss, train_acc_sum, n = 0.0, 0.0, 0
-        for X, y in train_iter:
+        for X, y in train_iter: # X.shape = torch.Size([256, 1, 28, 28]), y.shape = torch.Size([256])
             X, y = X.to(device), y.to(device)
-            y_hat = net(X)
+            y_hat = net(X) # y_hat.shape = torch.Size([256, 10])
             
             l = loss(y_hat, y).sum()           
             optimizer.zero_grad()
