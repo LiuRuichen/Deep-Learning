@@ -5,6 +5,9 @@ import torchvision
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 import numpy as np
+import os
+
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE' 
 
 def get_dataloader_workers():  
     """使用4个进程来读取数据。"""
@@ -83,8 +86,8 @@ def train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size,
         train_l_sum, train_acc_sum, n = 0.0, 0.0, 0
         c = 0
         for X, y in train_iter:
-            print(X.shape)
-            print(y.shape)
+            #print(X.shape)
+            #print(y.shape)
             y_hat = net(X)
             l = loss(y_hat, y).sum()
 
@@ -100,7 +103,7 @@ def train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size,
             optimizer.step()  # 用到优化器这里
 
             train_l_sum += l.item()
-            print('y_hat:', y_hat.shape)
+            #print('y_hat:', y_hat.shape)
             train_acc_sum += (y_hat.argmax(dim=1) == y).sum().item()
             n += y.shape[0] 
             c += 1
